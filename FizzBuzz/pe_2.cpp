@@ -9,28 +9,27 @@ int fib(int a){
     return a;
   } 
   else {
-    return ((fib(a-1)) + (fib(a-2)));
+    return (((fib(a-1)) + (fib(a-2))));
   }
 }
 
-
-
-
 int main(){
 
-  int sum = 2;
+  int sum = 0;
 
-  for(int i=3; i<=40; i++){
+  for(int i=0; i<=40; i++){
 
-    int fib = fib(i);
+    int current = fib(i);
 
-    if((fib%2==0) && (fib<4000000)){
+    if((current%2==0) && (current<4000000)){
 
-      sum += fib;
+      sum += current;
 
     }
   }
   cout << "total: " << sum << endl;
   return 0;
-
 }
+
+
+
