@@ -1,12 +1,12 @@
-BUILD = ../build
+BUILD = ../../build
 CPP = g++
 CPPFLAGS = -Wall -Wextra
 
-main: stack_tester.cpp Stack.o
-	$(CPP) $(CPPFLAGS) -o $(BUILD)/main stack_tester.cpp Stack.o
+main: Queue3_tester.cpp Queue3.o
+	$(CPP) $(CPPFLAGS) -o $(BUILD)/main Queue3_tester.cpp Queue3.o
 
-Stack.o: Stack.h Stack.cpp
-	$(CPP) $(CPPFLAGS) -c Stack.cpp
+Stack.o: Queue3.h Queue3.cpp
+	$(CPP) $(CPPFLAGS) -c Queue3.cpp
 
 clean:
 	rm -f *.o
