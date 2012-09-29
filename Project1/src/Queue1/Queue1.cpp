@@ -14,35 +14,77 @@ Stack::~Stack() {
   delete[] theQueue;
 }
 
-void Queue1::enqueue(int value) {
- 
-  //if theStack is full
-  if(theStack[capacity] == theStack[top]){
+void Queue1::enqueue(int value) { 
+  
+  //if theQueue is full
+  if(numElements == capacity){
 
-    // create new stack twice as big
-    newStack = new int[capacity*2];
+    // create new Queue twice as big
+    int newQueue = new int[capacity*2];
 
-
-    // copy all elements to new stack
-    for(int i=0; i<=capacity; ++i){
-      newStack[i] = theStack[i];
+    // copy all elements to new queue
+    if(back<front){
+      for(int i=0; i < numElements; ++i){
+        newQueue[i - front] = theQueue[i];
+      }
+      for(int i=0; i <= back; ++i){
+        newQueue[i + back] = theQueue[i];
+      }
+    }
+    else{
+      for(int i=0; i<numElements; i++){
+        newQueue[i] = theQueue[i];
+      }
     }
 
-    // delete old stack
-    delete[] theStack;
+    // delete old queue
+    delete[] theQueue;
+
     // point old stack pointer to new stack
-    theStack = newStack;
+    theQueue = newQueue;
   }
-  theStack[top] = value;
-  top++;
+  //enq value
+  theQueue[back] = value;
 
-  //test
-  //std::cout << top << std::endl;
-
+  //update pointer
+  back = (back+1) % capacity;
+  numElements++;
 }
 
 int Queue1::dequeue() {
-  return theStack[top];
+  
+  //if queue is using a quarter or less of its space 
+  if ((numElements <= capacity/4) && (capacity/2 > stackSize)){
+    
+    //create new queue with capacity/2
+    int* newQueue  = new int[capacity/2]
+
+    //copy all elements
+    if (back<front){
+      for(int i = front; i<capacity; ++i){
+        newQueue[i - front] = theQueue[i]
+      }
+      for(int i = 0; i<= back; ++i){
+        newQueue[i + back] = theQueue[i];
+      }
+    }
+    else{
+      for(int i = front; i <= back; ++i){
+        newQueue[i - front] = theQueue[i];
+      }
+    }
+    front = 0;
+    back = numElements;
+    delete[] theQueue;
+    theQueue = newQueue;
+  }
+  //this is deq
+  int value = theQueue[front];
+  
+  //update pointer
+  front = (front + 1) % capacity;
+  numElements--;
+  return value;
 }
 
 bool Queue1::isEmpty() {

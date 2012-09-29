@@ -36,33 +36,26 @@ Queue2::~Queue2() {
 
 void Queue2::enqueue(int value) {
  
-  //if theStack is full
-  if(theStack[capacity] == theStack[top]){
-
-    // create new stack twice as big
-    newStack = new int[capacity*2];
-
-
-    // copy all elements to new stack
-    for(int i=0; i<=capacity; ++i){
-      newStack[i] = theStack[i];
-    }
-
-    // delete old stack
-    delete[] theStack;
-    // point old stack pointer to new stack
-    theStack = newStack;
+  Node* curr = new Node(num);
+  curr-> setNext(0);
+  if(numElements == 0) {
+    front = curr;
+    back = curr;
   }
-  theStack[top] = value;
-  top++;
-
-  //test
-  //std::cout << top << std::endl;
-
+  else{
+    back-> setNext(curr);
+    back = temp;
+  }
+  numElements++;
 }
 
 int Queue2::dequeue() {
-  
+  Node* curr = front;
+  int value = temp->getValue();
+  front = temp->getNext();
+  delete temp;
+  numElements--;
+  return value;  
 }
 
 bool Queue2::isEmpty() {

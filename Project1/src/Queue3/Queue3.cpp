@@ -6,34 +6,15 @@ Queue3::Queue3() {
 }
 
 void Queue3::enqueue(int value) {
- 
-  //if theStack is full
-  if(theStack[capacity] == theStack[top]){
-
-    // create new stack twice as big
-    newStack = new int[capacity*2];
-
-
-    // copy all elements to new stack
-    for(int i=0; i<=capacity; ++i){
-      newStack[i] = theStack[i];
-    }
-
-    // delete old stack
-    delete[] theStack;
-    // point old stack pointer to new stack
-    theStack = newStack;
-  }
-  theStack[top] = value;
-  top++;
-
-  //test
-  //std::cout << top << std::endl;
-
-}
+  Queue3.push_back(value);
+  numElements++;
+} 
 
 int Queue3::dequeue() {
-  
+  int value = Queue3.front();
+  Queue3.pop_front();
+  numElements--;
+  return value;  
 }
 
 bool Queue3::isEmpty(){
