@@ -2,23 +2,34 @@
 #define __QUEUE2_H__
 
 
-#include <list>
+class Node {
 
-class Queue2 {
+  private:
+    int value;
+    Node* next;
 
- private:
-  int numElements;
-  <int> theQueue;
-
- public:
-  Queue2();
-  ~Queue2(); //destructor
-  void enqueue(int n);
-  int dequeue();
-  int size();
-  bool isEmpty;
+  public:
+    Node(int val);
+    int getValue();
+    Node* getNext();
+    void setNext(Node* n);
 
 };
 
+class Queue2 {
+
+  private:
+    Node* front;
+    Node* back;
+    int numElements;
+  public:
+    Queue2();
+    ~Queue2(); //destructor
+    int dequeue();
+    void enqueue(int n);
+    int size();
+    bool isEmpty();
+
+};
 
 #endif

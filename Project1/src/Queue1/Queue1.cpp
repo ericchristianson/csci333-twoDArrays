@@ -1,16 +1,16 @@
 #include "Queue1.h"
 #include <iostream>
 
-Queue1::Queue1(int stackSize) {
-  stackSize = size;
-  capacity = size;
+Queue1::Queue1(int nums) {
+  initSize = nums;
+  capacity = nums;
   numElements = 0;
-  int front = 0;
-  int back = 0;
-  theQueue = new int [stackSize];
+  front = 0;
+  back = 0;
+  theQueue = new int [nums];
 }
 
-Stack::~Stack() {
+Queue1::~Queue1() {
   delete[] theQueue;
 }
 
@@ -20,7 +20,7 @@ void Queue1::enqueue(int value) {
   if(numElements == capacity){
 
     // create new Queue twice as big
-    int newQueue = new int[capacity*2];
+    int* newQueue = new int[capacity*2];
 
     // copy all elements to new queue
     if(back<front){
@@ -51,18 +51,18 @@ void Queue1::enqueue(int value) {
   numElements++;
 }
 
-int Queue1::dequeue() {
+int Queue1::dequeue(){
   
   //if queue is using a quarter or less of its space 
-  if ((numElements <= capacity/4) && (capacity/2 > stackSize)){
+  if ((numElements <= capacity/4) && (capacity/2 > initSize)){
     
     //create new queue with capacity/2
-    int* newQueue  = new int[capacity/2]
+    int* newQueue  = new int[capacity/2];
 
     //copy all elements
-    if (back<front){
+    if(back<front){
       for(int i = front; i<capacity; ++i){
-        newQueue[i - front] = theQueue[i]
+        newQueue[i - front] = theQueue[i];
       }
       for(int i = 0; i<= back; ++i){
         newQueue[i + back] = theQueue[i];
@@ -99,3 +99,4 @@ bool Queue1::isEmpty() {
 int Queue1::size() {
   return numElements;
 }
+

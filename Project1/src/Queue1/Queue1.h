@@ -10,16 +10,16 @@ class Queue1 {
   int back;
   int numElements;
   int capacity;
-  int size; //initial size; not capacity
+  int initSize; //initial size; not capacity
 
  public:
   Queue1(int stackSize);
-  ~Stack(); //destructor
+  ~Queue1(); //destructor
   void push(int value);
   int dequeue();
   void enqueue(int n);
   int size();
-  bool isEmpty;
+  bool isEmpty();
 
 };
 

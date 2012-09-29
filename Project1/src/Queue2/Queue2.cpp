@@ -1,15 +1,13 @@
 #include "Queue2.h"
 #include <iostream>
 
-
-
 Node::Node(int n){
-  int num = n;
+  value = n;
   next = 0;
 }
 
 int Node::getValue(){
-  return num;
+  return value;
 }
 
 void Node::setNext(Node* n){
@@ -36,7 +34,7 @@ Queue2::~Queue2() {
 
 void Queue2::enqueue(int value) {
  
-  Node* curr = new Node(num);
+  Node* curr = new Node(value);
   curr-> setNext(0);
   if(numElements == 0) {
     front = curr;
@@ -44,16 +42,16 @@ void Queue2::enqueue(int value) {
   }
   else{
     back-> setNext(curr);
-    back = temp;
+    back = curr;
   }
   numElements++;
 }
 
 int Queue2::dequeue() {
   Node* curr = front;
-  int value = temp->getValue();
-  front = temp->getNext();
-  delete temp;
+  int value = curr->getValue();
+  front = curr->getNext();
+  delete curr;
   numElements--;
   return value;  
 }

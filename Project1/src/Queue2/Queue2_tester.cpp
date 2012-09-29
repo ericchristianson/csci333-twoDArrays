@@ -1,20 +1,21 @@
-#include "Stack.h"
+#include "Queue2.h"
 #include <iostream>
 
 using std::cout;
 using std::endl;
 
 int main() {
-  Stack* stack = new Stack(3);
-  stack->push(5);
-  stack->push(10);
-  stack->push(15);
+  Queue2* queue = new Queue2();
+  queue->enqueue(7);
+  queue->enqueue(10);
+  queue->enqueue(18);
 
-  cout << stack->pop() << endl;
-  cout << stack->pop() << endl;
-  cout << stack->pop() << endl;
-
-  delete stack;
-
+  cout << queue->size() << endl;
+  cout << queue->dequeue() << endl;
+  cout << queue->size() << endl;
+  cout << queue->dequeue() << endl;
+  cout << queue->size() << endl; 
+  
+  delete queue;
   return 0;
 }
