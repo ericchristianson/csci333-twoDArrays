@@ -2,30 +2,30 @@
 #include <iostream>
 
 Queue3::Queue3() {
-  numElements = 0
+  numElements = 0;
 }
 
 void Queue3::enqueue(int value) {
-  Queue3.push_back(value);
+  theQueue.push_back(value);
   numElements++;
 } 
 
 int Queue3::dequeue() {
-  int value = Queue3.front();
-  Queue3.pop_front();
+  int value = theQueue.front();
+  theQueue.pop_front();
   numElements--;
   return value;  
 }
 
 bool Queue3::isEmpty(){
   if(numElements == 0){
-    return true:
+    return true;
   }
   else{
     return false;
   }
 }
 
-int Stack::size() {
+int Queue3::size() {
   return numElements;
 }
